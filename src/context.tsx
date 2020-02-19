@@ -11,7 +11,7 @@ const ThemeContext = React.createContext<viewContext>({
 });
 
 export const ThemeContextProvider: React.FC = ({ children }) => {
-  const [curView, setCurView] = useState("practiceChoices");
+  const [curView, setCurView] = useState("listening");
 
   return (
     <ThemeContext.Provider value={{ curView, setCurView }}>
