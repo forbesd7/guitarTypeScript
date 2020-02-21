@@ -5,8 +5,9 @@ import PracticeOptions from "./components/PracticeOptions";
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Navbar text="hello" />
+
       <PracticeOptions />
     </div>
   );

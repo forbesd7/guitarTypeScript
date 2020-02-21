@@ -6,7 +6,7 @@ interface viewContext {
 }
 
 const ThemeContext = React.createContext<viewContext>({
-  curView: "aa",
+  curView: "listening",
   setCurView: (): void => {}
 });
 
