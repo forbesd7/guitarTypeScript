@@ -11,6 +11,7 @@ import {
   Typography
 } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
+import ListeningPractice from "./ListeningPractice";
 export interface ListeningOptionsProps {}
 
 const useStyles = makeStyles(() =>
@@ -38,7 +39,7 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
 
   const renderView = () => {
     if (practiceStarted) {
-      return <div>PRACTICE</div>;
+      return <ListeningPractice />;
     } else {
       return (
         <Fragment>
