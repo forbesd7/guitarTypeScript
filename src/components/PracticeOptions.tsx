@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../context";
-import ListeningOptions from "./ListeningOptions";
+import ListeningContainer from "./listening/ListeningContainer";
 import ChordChangeOptions from "./ChordChangeOptions";
 export interface PracticeOptionsProps {}
 
@@ -10,7 +10,7 @@ const PracticeOptions: React.SFC<PracticeOptionsProps> = () => {
   const renderView = () => {
     switch (curView) {
       case "listening": {
-        return <ListeningOptions />;
+        return <ListeningContainer />;
       }
       case "chordChanges": {
         return <ChordChangeOptions />;

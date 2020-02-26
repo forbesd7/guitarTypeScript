@@ -22,7 +22,7 @@ const useStyles = makeStyles(() =>
     }
   })
 );
-const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
+const ListeningContainer: React.SFC<ListeningOptionsProps> = () => {
   const classes = useStyles();
   const [practiceTime, setPracticeTime] = useState(0);
   const [practiceStarted, setPracticeStarted] = useState(false);
@@ -64,4 +64,4 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
   return <Fragment> {renderView()}</Fragment>;
 };
 
-export default ListeningOptions;
+export default ListeningContainer;
