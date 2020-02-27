@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, Fragment } from "react";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   FormControl,
@@ -10,9 +11,37 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
-export interface ListeningOptionsProps {}
 
-const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
+export interface ListeningOptionsProps {
+  setPracticeStarted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    formControl: {
+      minWidth: 120,
+      maxWidth: 300
+    }
+  })
+);
+
+const ListeningOptions: React.SFC<ListeningOptionsProps> = ({
+  setPracticeStarted
+}) => {
+  const classes = useStyles();
+  const [practiceTime, setPracticeTime] = useState(0);
+
+  const selectPracticeTime = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setPracticeTime(event.target.value as number);
+    console.log(practiceTime);
+  };
+
+  const startPractice = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setPracticeStarted(true);
+  };
+
   return (
     <Fragment>
       <Typography>Select Your Listening Options</Typography>

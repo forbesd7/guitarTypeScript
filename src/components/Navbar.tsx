@@ -5,7 +5,7 @@ import { ThemeContext } from "../context";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 
 export interface NavbarProps {
-  text: "hello";
+  text: string;
 }
 
 const Navbar: React.SFC<NavbarProps> = ({ text }) => {
