@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useContext } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -11,7 +11,7 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
-
+import { AppContext } from "../../context";
 export interface ListeningOptionsProps {
   setPracticeStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -28,18 +28,13 @@ const useStyles = makeStyles(() =>
 const ListeningOptions: React.SFC<ListeningOptionsProps> = ({
   setPracticeStarted
 }) => {
+  const { setState, state } = useContext(AppContext);
   const classes = useStyles();
   const [practiceTime, setPracticeTime] = useState(0);
 
   const selectPracticeTime = (event: React.ChangeEvent<{ value: unknown }>) => {
     setPracticeTime(event.target.value as number);
-    console.log(practiceTime);
-  };
-
-  const startPractice = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setPracticeStarted(true);
+    console.log(state);
   };
 
   return (
@@ -56,7 +51,13 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = ({
           <MenuItem value={180}>Three Minutes</MenuItem>
           <MenuItem value={300}>Five Minutes</MenuItem>
         </Select>
-        <Button onClick={startPractice}>Start</Button>
+        <Button
+          onClick={() => {
+            setState({ ...state, hasPracticeStarted: true });
+          }}
+        >
+          Start
+        </Button>
       </FormControl>
     </Fragment>
   );
