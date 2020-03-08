@@ -7,13 +7,17 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Typography
+  Typography,
+  Grid
 } from "@material-ui/core";
 import { AppContext } from "../../context/context";
 import { ListeningContext } from "../../context/listeningContext";
+import Chord from "./Chord";
 export interface ListeningOptionsProps {
   setPracticeStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const CHORD_TYPES = ["A", "B", "C", "D", "E", "F", "G"];
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -72,7 +76,13 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
           <MenuItem value={"Minor"}>Minor</MenuItem>
         </Select>
       </FormControl>
-
+      <div>
+        <Grid container>
+          {CHORD_TYPES.map(chord => {
+            return <Chord name={chord} />;
+          })}
+        </Grid>
+      </div>
       <Button
         onClick={() => {
           setState({ ...state, hasPracticeStarted: true });
