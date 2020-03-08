@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { ThemeContext } from "../context";
+import { ThemeContext } from "../context/context";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 
 export interface NavbarProps {

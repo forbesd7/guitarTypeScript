@@ -10,27 +10,9 @@ const ThemeContext = React.createContext<viewContext>({
   setCurView: (): void => {}
 });
 
-interface listeningPracticeOptions {
-  practiceLength: number;
-  chordsToPractice: Array<string>;
-  numberOfQuestions: number;
-}
-
-const listeningPracticeContext = React.createContext<listeningPracticeOptions>({
-  practiceLength: 60,
-  chordsToPractice: ["a"],
-  numberOfQuestions: 10
-});
-
-// export const listeningContextProvider = React.FC = ({children}) => {
-//   return (
-//     <listeningPracticeContext.Provider value={2}>{children}</listeningPracticeContext.Provider>
-//   )
-// }
-
 interface App {
   curView: string;
-  hasPracticeStarted: boolean;
+  hasPracticeStarted: Boolean;
 }
 
 const defaultApp: App = {

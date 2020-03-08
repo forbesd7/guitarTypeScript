@@ -6,12 +6,11 @@ import {
   FormControl,
   InputLabel,
   Select,
-  Input,
   MenuItem,
-  Paper,
   Typography
 } from "@material-ui/core";
-import { AppContext } from "../../context";
+import { AppContext } from "../../context/context";
+import { ListeningContext } from "../../context/listeningContext";
 export interface ListeningOptionsProps {
   setPracticeStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -25,17 +24,20 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const ListeningOptions: React.SFC<ListeningOptionsProps> = ({
-  //ss
-  setPracticeStarted
-}) => {
+const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
   const { setState, state } = useContext(AppContext);
+  const { listeningOptions, setListeningOptions } = useContext(
+    ListeningContext
+  );
   const classes = useStyles();
   const [practiceTime, setPracticeTime] = useState(0);
 
   const selectPracticeTime = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPracticeTime(event.target.value as number);
-    console.log(state);
+    setListeningOptions({
+      ...listeningOptions,
+      practiceTime: event.target.value as number
+    });
+    console.log(listeningOptions);
   };
 
   return (
@@ -45,7 +47,7 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = ({
         <InputLabel id="practice-time">Practice Time</InputLabel>
         <Select
           labelId="practice-time"
-          value={practiceTime}
+          value={listeningOptions.practiceTime}
           onChange={selectPracticeTime}
         >
           <MenuItem value={60}>One Minute</MenuItem>

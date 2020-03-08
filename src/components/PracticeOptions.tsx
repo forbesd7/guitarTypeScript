@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { ThemeContext } from "../context";
+import { ThemeContext } from "../context/context";
 import ListeningContainer from "./listening/ListeningContainer";
 import ChordChangeOptions from "./ChordChangeOptions";
 export interface PracticeOptionsProps {}

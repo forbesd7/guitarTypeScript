@@ -2,7 +2,7 @@ import * as React from "react";
 import { Fragment, useState, useContext } from "react";
 import ListeningPractice from "./ListeningPractice";
 import ListeningOptions from "./ListeningOptions";
-import { AppContext } from "../../context";
+import { AppContext } from "../../context/context";
 
 export interface ListeningOptionsProps {}
 
