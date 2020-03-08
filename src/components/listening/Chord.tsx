@@ -1,15 +1,22 @@
-import React, { Fragment } from "react";
-import { Button } from "@material-ui/core";
+import React, { Fragment, useEffect, useState } from "react";
+import { Button, Grid } from "@material-ui/core";
 
 export interface ChordProps {
-  name: string;
+  chordName: string;
+  addChordToPractice: (chordName: string) => void;
 }
 
-const Chord: React.SFC<ChordProps> = ({ name }) => {
+const Chord: React.SFC<ChordProps> = ({ chordName, addChordToPractice }) => {
   return (
-    <Fragment>
-      <Button>{name}</Button>
-    </Fragment>
+    <Grid item>
+      <Button
+        onClick={() => {
+          addChordToPractice(chordName);
+        }}
+      >
+        {chordName}
+      </Button>
+    </Grid>
   );
 };
 

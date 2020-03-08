@@ -49,6 +49,20 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
     setChordType(event.target.value as string);
   };
 
+  const addChordToPractice = (chord: string) => {
+    let newChords = listeningOptions.practiceChords;
+
+    if (!newChords.includes(chord)) {
+      newChords.push(chord);
+    } else {
+      let chordIndex = newChords.indexOf(chord);
+      newChords.splice(chordIndex, 1);
+    }
+
+    setListeningOptions({ ...listeningOptions, practiceChords: newChords });
+    console.log(listeningOptions.practiceChords);
+  };
+
   return (
     <Fragment>
       <Typography>Select Your Listening Options</Typography>
@@ -79,7 +93,12 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
       <div>
         <Grid container>
           {CHORD_TYPES.map(chord => {
-            return <Chord name={chord} />;
+            return (
+              <Chord
+                addChordToPractice={addChordToPractice}
+                chordName={chord}
+              />
+            );
           })}
         </Grid>
       </div>

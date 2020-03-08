@@ -6,7 +6,7 @@ interface ListeningOptions {
 }
 
 const defaultListeningOptions = {
-  practiceChords: ["AMaj", "DMaj", "EMaj", "CMaj", "FMaj"],
+  practiceChords: [],
   practiceTime: 60
 };
 
