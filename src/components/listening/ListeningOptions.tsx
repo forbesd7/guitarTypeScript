@@ -18,7 +18,8 @@ export interface ListeningOptionsProps {
 const useStyles = makeStyles(() =>
   createStyles({
     formControl: {
-      width: 200
+      width: 150,
+      margin: "10px"
     }
   })
 );
@@ -40,6 +41,10 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
     console.log(listeningOptions);
   };
 
+  const selectChordType = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setChordType(event.target.value as string);
+  };
+
   return (
     <Fragment>
       <Typography>Select Your Listening Options</Typography>
@@ -54,13 +59,6 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
           <MenuItem value={180}>Three Minutes</MenuItem>
           <MenuItem value={300}>Five Minutes</MenuItem>
         </Select>
-        <Button
-          onClick={() => {
-            setState({ ...state, hasPracticeStarted: true });
-          }}
-        >
-          Start
-        </Button>
       </FormControl>
 
       <FormControl className={classes.formControl}>
@@ -68,13 +66,20 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
         <Select
           labelId="chord-type"
           value={chordType}
-          onChange={selectPracticeTime}
+          onChange={selectChordType}
         >
-          <MenuItem value={60}>One Minute</MenuItem>
-          <MenuItem value={180}>Three Minutes</MenuItem>
-          <MenuItem value={300}>Five Minutes</MenuItem>
+          <MenuItem value={"Major"}>Major</MenuItem>
+          <MenuItem value={"Minor"}>Minor</MenuItem>
         </Select>
       </FormControl>
+
+      <Button
+        onClick={() => {
+          setState({ ...state, hasPracticeStarted: true });
+        }}
+      >
+        Start
+      </Button>
     </Fragment>
   );
 };
