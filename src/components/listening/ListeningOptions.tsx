@@ -18,8 +18,7 @@ export interface ListeningOptionsProps {
 const useStyles = makeStyles(() =>
   createStyles({
     formControl: {
-      minWidth: 120,
-      maxWidth: 300
+      width: 200
     }
   })
 );
@@ -29,8 +28,9 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
   const { listeningOptions, setListeningOptions } = useContext(
     ListeningContext
   );
+  const [chordType, setChordType] = useState("Major");
+
   const classes = useStyles();
-  const [practiceTime, setPracticeTime] = useState(0);
 
   const selectPracticeTime = (event: React.ChangeEvent<{ value: unknown }>) => {
     setListeningOptions({
@@ -61,6 +61,19 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
         >
           Start
         </Button>
+      </FormControl>
+
+      <FormControl className={classes.formControl}>
+        <InputLabel id="chord-type">Chord Type</InputLabel>
+        <Select
+          labelId="chord-type"
+          value={chordType}
+          onChange={selectPracticeTime}
+        >
+          <MenuItem value={60}>One Minute</MenuItem>
+          <MenuItem value={180}>Three Minutes</MenuItem>
+          <MenuItem value={300}>Five Minutes</MenuItem>
+        </Select>
       </FormControl>
     </Fragment>
   );

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/context";
 import ListeningContainer from "./listening/ListeningContainer";
 import ChordChangeOptions from "./ChordChangeOptions";
+import "./styles/practiceOptions.css";
 export interface PracticeOptionsProps {}
 
 const PracticeOptions: React.SFC<PracticeOptionsProps> = () => {
@@ -19,7 +20,7 @@ const PracticeOptions: React.SFC<PracticeOptionsProps> = () => {
         return "wrong view";
     }
   };
-  return <div>{renderView()}</div>;
+  return <div className="mainContainer">{renderView()}</div>;
 };
 
 export default PracticeOptions;
