@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { ThemeContext } from "../context/context";
+import { AppStateContext } from "../context/appStateContext";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 
 export interface NavbarProps {
@@ -10,10 +10,10 @@ export interface NavbarProps {
 
 const Navbar: React.SFC<NavbarProps> = ({ text }) => {
   const [selectedTab, changeSelectedTab] = useState(0);
-  const { setCurView } = useContext(ThemeContext);
+  const { state, setAppState } = useContext(AppStateContext);
   const changeView = (event: React.MouseEvent<{}>, newView: string) => {
     event.preventDefault();
-    setCurView(newView);
+    setAppState({ ...state, curView: newView });
   };
 
   const changeTab = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -23,13 +23,13 @@ const Navbar: React.SFC<NavbarProps> = ({ text }) => {
     <AppBar>
       <Tabs value={selectedTab} onChange={changeTab}>
         <Tab
-          onClick={e => {
+          onClick={(e) => {
             changeView(e, "listening");
           }}
           label="Listening"
         />
         <Tab
-          onClick={e => {
+          onClick={(e) => {
             changeView(e, "chordChanges");
           }}
           label="Chord Changes"

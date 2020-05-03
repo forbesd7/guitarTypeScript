@@ -8,9 +8,9 @@ import {
   Select,
   MenuItem,
   Typography,
-  Grid
+  Grid,
 } from "@material-ui/core";
-import { AppContext } from "../../context/context";
+import { AppStateContext } from "../../context/appStateContext";
 import { ListeningContext } from "../../context/listeningContext";
 import Chord from "./Chord";
 export interface ListeningOptionsProps {
@@ -23,13 +23,13 @@ const useStyles = makeStyles(() =>
   createStyles({
     formControl: {
       width: 150,
-      margin: "10px"
-    }
+      margin: "10px",
+    },
   })
 );
 
 const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
-  const { setState, state } = useContext(AppContext);
+  const { setAppState, state } = useContext(AppStateContext);
   const { listeningOptions, setListeningOptions } = useContext(
     ListeningContext
   );
@@ -40,7 +40,7 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
   const selectPracticeTime = (event: React.ChangeEvent<{ value: unknown }>) => {
     setListeningOptions({
       ...listeningOptions,
-      practiceTime: event.target.value as number
+      practiceTime: event.target.value as number,
     });
     console.log(listeningOptions);
   };
@@ -92,7 +92,7 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
       </FormControl>
       <div>
         <Grid container>
-          {CHORD_TYPES.map(chord => {
+          {CHORD_TYPES.map((chord) => {
             return (
               <Chord
                 addChordToPractice={addChordToPractice}
@@ -104,7 +104,7 @@ const ListeningOptions: React.SFC<ListeningOptionsProps> = () => {
       </div>
       <Button
         onClick={() => {
-          setState({ ...state, hasPracticeStarted: true });
+          setAppState({ ...state, hasPracticeStarted: true });
         }}
       >
         Start
